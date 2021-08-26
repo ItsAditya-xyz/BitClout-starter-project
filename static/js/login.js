@@ -4,7 +4,7 @@ loggedInPublicKey = ""
 /*responsible for user login*/
 function login() {
   identityWindow = window.open(
-    "https://identity.bitclout.com/log-in?accessLevelRequest=3",
+    "https://identity.bitclout.com/log-in?accessLevelRequest=2",
     null,
     "toolbar=no, width=800, height=1000, top=0, left=0"
   );
