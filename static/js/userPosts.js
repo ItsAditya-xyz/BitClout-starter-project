@@ -1,3 +1,6 @@
+
+/* for readability this file can be minified*/
+
 function getUserPosts(publicKey, count, username) {
     $.get(`/getPost/?publicKey=${publicKey}&count=${count}`,  // url
         function (data, textStatus, jqXHR) {  // success callback
@@ -21,8 +24,7 @@ function getUserPosts(publicKey, count, username) {
                             </div>
                             <div class="mt-2 p-2">
                                 <p class="comment-content">${postBody}</p>
-                            </div>
-    
+                            </div> 
                         </div>
                     </div>
                 </div>
@@ -52,7 +54,7 @@ function getUserPosts(publicKey, count, username) {
                     recloutBody = isReclout["Body"]
                     recloutPublicKey = isReclout["ProfileEntryResponse"]["PublicKeyBase58Check"]
                     recloutUsername = isReclout["ProfileEntryResponse"]["Username"]
-                    finalPostsBody += `         <div class="container mt-5">
+                    finalPostsBody += ` <div class="container mt-5">
                 <div class="d-flex justify-content-center row">
                     <div class="col-md-6">
                         <div class="bg-white comment-section">
@@ -79,7 +81,6 @@ function getUserPosts(publicKey, count, username) {
                                         </div>
                                     </div>
                                 </div>
-    
                         </div>
                     </div>
                 </div>
@@ -89,10 +90,9 @@ function getUserPosts(publicKey, count, username) {
 
             }
             postBox.innerHTML = finalPostsBody
-
-
         });
 }
+
 
 function getUserInfo(publicKey) {
     $.get(`/getUser/?publicKey=${publicKey}&`,  // url

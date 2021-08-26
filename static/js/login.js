@@ -1,6 +1,7 @@
 loggedInPublicKey = ""
 
 
+/*responsible for user login*/
 function login() {
   identityWindow = window.open(
     "https://identity.bitclout.com/log-in?accessLevelRequest=3",
@@ -29,12 +30,10 @@ function handleLogin(payload) {
     identityWindow = null;
     loggedInPublicKey = payload.publicKeyAdded;
 
-    isTxnSign = "signedTransactionHex" in JSON.parse(window.localStorage.getItem('identity'))
-
-    console.log(isTxnSign)
+    isTxnSign = "signedTransactionHex" in JSON.parse(window.localStorage.getItem('identity')) //just a way to check if this is user login or post approval window
     if (!isTxnSign) {
-      if(typeof loggedInPublicKey !== 'undefined'){
-      localStorage.setItem("lastUser", JSON.stringify({ "publicKey": loggedInPublicKey }));
+      if (typeof loggedInPublicKey !== 'undefined') {
+        localStorage.setItem("lastUser", JSON.stringify({ "publicKey": loggedInPublicKey }));
       }
       $.get(`/getUser/?publicKey=${loggedInPublicKey}&`,  // url
         function (data, textStatus, jqXHR) {  // success callback
@@ -44,7 +43,7 @@ function handleLogin(payload) {
           getUserPosts(loggedInPublicKey, numOfPostsToFetch, username)
         });
     }
-    else if(JSON.parse(window.localStorage.getItem('identity'))["signedTransactionHex"]){
+    else if (JSON.parse(window.localStorage.getItem('identity'))["signedTransactionHex"]) {
       $.get(`/submit-transaction/?signTxnHash=${JSON.parse(window.localStorage.getItem('identity'))["signedTransactionHex"]}`,
         function (data, textStatus, jqXHR) {
           console.log(data)
@@ -101,7 +100,6 @@ var identityWindow = null;
 
 
 // code below is responsible for making post to bitclout
-
 function makePost() {
   var txt = $("#postBodyForm").val();
   console.log(txt)
@@ -120,10 +118,6 @@ function makePost() {
         console.log(data)
         identityWindow = window.open(`https://identity.bitclout.com/approve?tx=${data}`, null,
           "toolbar=no, width=800, height=1000, top=0, left=0")
-
-
-
-
       });
   }
 

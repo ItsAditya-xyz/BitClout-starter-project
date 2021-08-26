@@ -7,26 +7,27 @@ from werkzeug.wrappers import response
 from endpoints.getPost import getPostsOfUser
 from endpoints.getUser import getSingleProfile
 from endpoints.makePost import submitTransaction, getPostTransaction
+
 app = Flask(__name__)
 @app.route('/')
 
 def home():
-    return render_template('index.html')
+    return render_template('index.html') #rendering index.html file
 
-@app.route('/getPost/')
+@app.route('/getPost/') #endpoint for getting recent posts of user
 def getPosts():
     publicKey = request.args.get('publicKey')
     count = request.args.get('count')
     response = getPostsOfUser( publicKey, int(count))
     return jsonify(response)
 
-@app.route('/getUser/')
+@app.route('/getUser/') #for getting user info
 def getUserInformation():
     publicKey = request.args.get('publicKey')
     response = getSingleProfile(publicKey)
     return jsonify(response)
 
-@app.route('/submit-post/')
+@app.route('/submit-post/') #to submit post and get post txn
 def createPostTxn():
     publicKey = request.args.get('publicKey')
     body = request.args.get('body')
@@ -34,7 +35,7 @@ def createPostTxn():
     response = getPostTransaction(publicKey, body, imageURL) #yes, the method takes list of images since multiple images can be uploaded just like twitter
     return response #returning txnHash
 
-@app.route('/submit-transaction/')
+@app.route('/submit-transaction/') #to submit post txn
 def submitTxn():
     signedTxnHash = request.args.get('signTxnHash')
     response = submitTransaction(signedTxnHash)
