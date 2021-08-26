@@ -1,0 +1,61 @@
+.formBar{
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+    height: 450px !important;
+}
+
+.profileContainer{
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+#postBtn{
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profilePic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.comment-section {
+    display: block;
+    border-radius: 11px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 5%;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.reclout-section{
+    display: block;
+    border-radius: 11px;
+    box-shadow: 0 0 9px 1px rgb(204, 204, 204) inset;
+    margin-bottom: 5%;
+    width: 500px;
+
+}
+.name {
+    font-size: 20px
+}
+
+.comment-content {
+    font-size: 14px
+}
+
+.comments {
+    color: blue
+}
+
+.recloutContainer{
+   margin-left: -10px !important;
+}
+.bodyImage{
+    max-height: 500px;
+   border-radius: 11px;
+}
